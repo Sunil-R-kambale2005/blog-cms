@@ -182,3 +182,285 @@
     border-right-color: var(--border);
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #f6f7fb;
+  color: #202438;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.admin-layout {
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 245px;
+  position: fixed;
+  inset: 0 auto 0 0;
+  background: #171a2b;
+  color: white;
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  font-size: 25px;
+  margin: 0 0 45px 8px;
+}
+
+.brand span {
+  color: #a99aff;
+}
+
+.menu-label {
+  color: #9296ad;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding-left: 10px;
+}
+
+.menu-item {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  width: 100%;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #c4c7d7;
+  padding: 13px 12px;
+  margin: 4px 0;
+  text-align: left;
+}
+
+.menu-item:hover,
+.menu-item.active {
+  background: #35304f;
+  color: white;
+}
+
+.sidebar-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding: 16px 4px 0;
+  border-top: 1px solid #36394b;
+  font-size: 13px;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #a99aff;
+  color: #171a2b;
+  font-weight: bold;
+}
+
+.sidebar-bottom p {
+  margin: 5px 0 0;
+  color: #a8acc0;
+}
+
+.main-content {
+  margin-left: 245px;
+  padding: 32px;
+}
+
+.topbar,
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.breadcrumb,
+.eyebrow {
+  color: #777b91;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.topbar h1 {
+  font-size: 28px;
+  margin: 8px 0 25px;
+}
+
+.preview-button,
+.primary-button {
+  padding: 11px 16px;
+  border: 1px solid #e0e1eb;
+  border-radius: 9px;
+  background: white;
+  color: #29253e;
+}
+
+.primary-button {
+  background: #6750d9;
+  color: white;
+  border: 0;
+}
+
+.welcome {
+  background: linear-gradient(120deg, #e9e5ff, #f6edff);
+  border: 1px solid #e2d9ff;
+  border-radius: 16px;
+  padding: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome h2 {
+  margin: 12px 0;
+  font-size: 25px;
+}
+
+.welcome p:last-child {
+  color: #66677d;
+  line-height: 1.6;
+}
+
+.welcome-icon {
+  font-size: 55px;
+  color: #6750d9;
+  padding: 15px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 25px 0;
+}
+
+.stat-card,
+.content-card {
+  background: white;
+  border: 1px solid #e8e9f0;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.stat-card p {
+  color: #73778c;
+  font-size: 13px;
+}
+
+.stat-card h2 {
+  font-size: 30px;
+  margin: 12px 0;
+}
+
+.stat-card span {
+  color: #888ba0;
+  font-size: 12px;
+}
+
+.content-card h2 {
+  margin-top: 0;
+}
+
+.content-card > p,
+.section-heading p {
+  color: #777b91;
+  font-size: 14px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 45px 15px;
+  margin-top: 20px;
+  border: 1px dashed #dcddea;
+  border-radius: 12px;
+}
+
+.empty-icon {
+  font-size: 30px;
+  color: #6750d9;
+}
+
+.empty-state p {
+  color: #777b91;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .sidebar {
+    width: 190px;
+  }
+
+  .main-content {
+    margin-left: 190px;
+    padding: 22px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 72px;
+    padding: 20px 8px;
+  }
+
+  .brand {
+    font-size: 14px;
+    margin: 0 0 30px;
+  }
+
+  .menu-label,
+  .menu-item span,
+  .sidebar-bottom > div:last-child {
+    display: none;
+  }
+
+  .menu-item {
+    justify-content: center;
+    padding: 13px 4px;
+  }
+
+  .sidebar-bottom {
+    justify-content: center;
+  }
+
+  .main-content {
+    margin-left: 72px;
+    padding: 14px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome {
+    padding: 18px;
+  }
+
+  .welcome-icon {
+    display: none;
+  }
+
+  .topbar,
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
