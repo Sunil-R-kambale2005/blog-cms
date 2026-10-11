@@ -4,10 +4,38 @@ const Post = require("../models/post");
 
 const router = express.Router();
 
+const createSlug = (title = "") =>
+  title
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+
+const createUniqueSlug = async (title) => {
+  const baseSlug = createSlug(title) || "untitled-post";
+
+  let slug = baseSlug;
+  let suffix = 1;
+
+  while (await Post.exists({ slug })) {
+    slug = `${baseSlug}-${suffix}`;
+    suffix += 1;
+  }
+
+  return slug;
+};
+
 // CREATE: Add a new blog post
 router.post("/", async (req, res) => {
   try {
-    const post = await Post.create(req.body);
+    const payload = { ...req.body };
+
+    if (!payload.slug && payload.title) {
+      payload.slug = await createUniqueSlug(payload.title);
+    }
+
+    const post = await Post.create(payload);
     res.status(201).json(post);
   } catch (error) {
     res.status(400).json({ message: error.message });
